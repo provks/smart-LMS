@@ -1,15 +1,16 @@
 import fs from "fs";
-import Category from "../models/CategoryModel";
-import Course from "../models/CourseModel"
-import User from "../models/UserModel";
+import Category from "../models/CategoryModel.js";
+import Course from "../models/CourseModel.js"
+import User from "../models/UserModel.js";
 
 
 const importData = async () => {
     try {
+        console.log('Clearing database!');
         // clean the database
+        await User.deleteMany();
         await Course.deleteMany();
         await Category.deleteMany();
-        await User.deleteMany();
 
         // insert the data
 
@@ -46,16 +47,25 @@ const importData = async () => {
         await Course.insertMany(courses);
 
         console.log('Data is successfully added to database!');
+        process.exit();
     } catch (error) {
         console.log("Error while adding data: ", error);
+        process.exit(1);
     }
 
-    // remove data
-    const destroyData = () => {
-        // deleteMany queries will go here!
-        console.log("Data destroyed")
-    }
+}
+// remove data
+const destroyData = () => {
+    // deleteMany queries will go here!
+    console.log("Data destroyed")
+    process.exit();
 
-    // logic to add script to run seed file for different methods
+}
 
+// logic to add script to run seed file for different methods
+if (process.argv[2] === '-d') {
+    destroyData();
+} else {
+    importData("import data");
+    console.log("import data");
 }
