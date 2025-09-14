@@ -64,8 +64,12 @@ const importData = async () => {
 
 }
 // remove data
-const destroyData = () => {
+const destroyData = async () => {
     // deleteMany queries will go here!
+    // clean the database
+    await User.deleteMany();
+    await Course.deleteMany();
+    await Category.deleteMany();
     console.log("Data destroyed")
     process.exit();
 
@@ -73,10 +77,7 @@ const destroyData = () => {
 
 // logic to add script to run seed file for different methods
 if (process.argv[2] === '-d') {
-    // clean the database
-    await User.deleteMany();
-    await Course.deleteMany();
-    await Category.deleteMany();
+
     destroyData();
 } else {
     importData();
