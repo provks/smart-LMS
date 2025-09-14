@@ -3,6 +3,7 @@ import Navbar from './components/layout/Navbar.jsx'
 import Home from './pages/Home.jsx'
 import Login from './pages/Login'
 import { Routes, Route } from 'react-router-dom'
+import Register from './pages/Register.jsx'
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/courses" element={<h1 className="text-center mt-5">Courses Page</h1>} />
       </Routes>
       <Footer />
