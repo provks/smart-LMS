@@ -2,6 +2,14 @@ import fs from "fs";
 import Category from "../models/CategoryModel.js";
 import Course from "../models/CourseModel.js"
 import User from "../models/UserModel.js";
+import path from 'path';
+import dotenv from "dotenv";
+import bcrypt from 'bcrypt';
+dotenv.config();
+import connectDB from '../config/db.js';
+// connect to db
+connectDB();
+const __dirname = path.resolve();
 
 
 const importData = async () => {
@@ -13,6 +21,7 @@ const importData = async () => {
         await Category.deleteMany();
 
         // insert the data
+        console.log("__dirname", __dirname);
 
         // insert user data
         const usersData = JSON.parse(fs.readFileSync(path.join(__dirname, '/data/users.json'), 'utf-8'));
@@ -64,8 +73,12 @@ const destroyData = () => {
 
 // logic to add script to run seed file for different methods
 if (process.argv[2] === '-d') {
+    // clean the database
+    await User.deleteMany();
+    await Course.deleteMany();
+    await Category.deleteMany();
     destroyData();
 } else {
-    importData("import data");
+    importData();
     console.log("import data");
 }
