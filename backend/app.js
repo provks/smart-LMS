@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use('/api/auth', authRoutes); // goes to authRoute
-app.use('/api/course', courseRoutes); // goes to courseRoute
+app.use('/api/courses', courseRoutes); // goes to courseRoute
 app.use('/api/category', categoryRoutes); // goes to categoryRoute
 
 if (process.env.NODE_ENV === 'dev') {
