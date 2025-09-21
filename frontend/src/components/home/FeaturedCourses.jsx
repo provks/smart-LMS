@@ -41,7 +41,7 @@ const FeaturedCourses = () => {
             {courses.map((course) => (
               <div className="col-md-4" key={course._id}>
                 <Link
-                  to="/courses/1"
+                  to={"/courses/"+course._id}
                   className="text-decoration-none text-dark"
                 >
                   <div className="card h-100 shadow-lg border-0 position-relative">

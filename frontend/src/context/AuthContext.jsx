@@ -12,6 +12,7 @@ export const AuthProvider = ({ children }) => {
         try {
             const { data } = await axios.post(backendURL + "/api/auth/login", {email, password});
             // save into state
+            console.log("token", data)
             setUser(data);
             localStorage.setItem('user', JSON.stringify(data)); // storing user info in local storage
         } catch (error) {
@@ -25,7 +26,7 @@ export const AuthProvider = ({ children }) => {
         localStorage.removeItem('user'); // storing user info in local storage
     }
 
-    return <AuthContext.Provider value={{user, setUser}}>
+    return <AuthContext.Provider value={{user, login, logout}}>
         {children}
     </AuthContext.Provider>
 }
