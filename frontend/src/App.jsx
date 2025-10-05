@@ -7,6 +7,7 @@ import Register from './pages/Register.jsx'
 import CourseDetail from './pages/CourseDetailPage.jsx'
 import PrivateRoute from './components/PrivateRoute.jsx'
 import LearningPage from './pages/LearningPage.jsx'
+import LessonPlayerPage from './pages/LessonPlayerPage.jsx'
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/courses/:id" element={<CourseDetail/>} />
         <Route element={<PrivateRoute/>} > 
           <Route path="/learning" element={<LearningPage/>} />
+          <Route path="/learn/courses/:id" element={<LessonPlayerPage/>} />
         </Route>
       </Routes>
       <Footer />
