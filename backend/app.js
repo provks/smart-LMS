@@ -9,6 +9,7 @@ import authRoutes from './routes/authRoutes.js';
 import courseRoutes from './routes/courseRoutes.js';
 import categoryRoutes from './routes/categoryRoutes.js';
 import paymentRoutes from './routes/paymentRoutes.js';
+import userRoutes from './routes/userRoutes.js';
 
 // connect to db
 connectDB();
@@ -21,6 +22,7 @@ app.use('/api/auth', authRoutes); // goes to authRoute
 app.use('/api/courses', courseRoutes); // goes to courseRoute
 app.use('/api/category', categoryRoutes); // goes to categoryRoute
 app.use('/api/payment', paymentRoutes); // payment
+app.use('/api/user', userRoutes); // user profile
 
 if (process.env.NODE_ENV === 'dev') {
     app.use(morgan('dev'));
