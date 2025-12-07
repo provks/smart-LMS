@@ -9,6 +9,7 @@ import PrivateRoute from './components/PrivateRoute.jsx'
 import LearningPage from './pages/LearningPage.jsx'
 import LessonPlayerPage from './pages/LessonPlayerPage.jsx'
 import ProfilePage from './pages/ProfilePage.jsx'
+import CoursesPage from './pages/CoursesPage.jsx'
 
 function App() {
   return (
@@ -18,7 +19,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/courses" element={<h1 className="text-center mt-5">Courses Page</h1>} />
+        {/* <Route path="/courses" element={<h1 className="text-center mt-5">Courses Page</h1>} /> */}
+        <Route path="/courses" element={<CoursesPage />} />
         <Route path="/courses/:id" element={<CourseDetail/>} />
         <Route element={<PrivateRoute/>} > 
           <Route path="/learning" element={<LearningPage/>} />
