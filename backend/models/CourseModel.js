@@ -2,15 +2,16 @@ import mongoose from "mongoose";
 const { Schema } = mongoose
 
 
-// module schema
-const moduleSchema = new Schema({
-  title: {type: String, required: true},
-  lessons: [lessonSchema],
-})
 // lesson schema
 const lessonSchema = new Schema({
   title: {type: String, required: true},
   videoUrl: {type: String, required: true},
+})
+
+// module schema
+const moduleSchema = new Schema({
+  title: {type: String, required: true},
+  lessons: [lessonSchema],
 })
 
 const courseSchema = new Schema({
