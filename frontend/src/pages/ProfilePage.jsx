@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
-import { Form, Button, Card, Container, Row, Col, Alert } from "react-bootstrap";
 import { useAuth } from "../context/AuthContext";
 import axios from 'axios';
 
@@ -75,60 +74,76 @@ export default function ProfilePage() {
   };
 
   return (
-    <Container className="py-5">
-      <Row className="justify-content-center">
-        <Col xs={12} md={8} lg={6}>
-          <Card className="shadow-lg border-0 rounded-4">
-            <Card.Body className="p-4">
+    <div className="container py-5">
+      <div className="row justify-content-center">
+        <div className="col-12 col-md-8 col-lg-6">
+          <div className="card shadow-lg border-0 rounded-4">
+            <div className="card-body p-4">
               <h3 className="text-center mb-4">👤 My Profile</h3>
 
               {success && (
-                <Alert variant="success" className="text-center">
+                <div className="alert alert-success text-center" role="alert">
                   ✅ Profile updated successfully!
-                </Alert>
+                </div>
               )}
 
-              <Form onSubmit={handleSubmit}>
+              <form onSubmit={handleSubmit}>
                 {/* ID (read-only) */}
-                {/* <Form.Group className="mb-3">
-                  <Form.Label>User ID</Form.Label>
-                  <Form.Control type="text" value={user.id} readOnly />
-                </Form.Group> */}
+                {/* 
+                <div className="mb-3">
+                  <label htmlFor="userId" className="form-label">User ID</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="userId"
+                    value={user.id}
+                    readOnly
+                  />
+                </div>
+                */}
 
                 {/* Name */}
-                <Form.Group className="mb-3">
-                  <Form.Label>Name</Form.Label>
-                  <Form.Control
+                <div className="mb-3">
+                  <label htmlFor="name" className="form-label">
+                    Full Name
+                  </label>
+                  <input
                     type="text"
+                    className="form-control"
+                    id="name"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Enter your full name"
                     required
                   />
-                </Form.Group>
+                </div>
 
                 {/* Email */}
-                <Form.Group className="mb-4">
-                  <Form.Label>Email</Form.Label>
-                  <Form.Control
+                <div className="mb-4">
+                  <label htmlFor="email" className="form-label">
+                    Email
+                  </label>
+                  <input
                     type="email"
+                    className="form-control"
+                    id="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter your email"
                     required
                   />
-                </Form.Group>
+                </div>
 
                 <div className="d-grid">
-                  <Button type="submit" variant="primary" size="lg">
+                  <button type="submit" className="btn btn-primary btn-lg">
                     Save Changes
-                  </Button>
+                  </button>
                 </div>
-              </Form>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
-    </Container>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
